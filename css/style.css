@@ -1,3 +1,24 @@
+/* Navbar */
+.navbar-custom {
+  background-color: #af5d10df;
+}
+
+/* Map */
 #map {
-    height: 480px;
+  position: inherited;
+  height: 88vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Left Panel */
+.table-responsive {
+  height: 84vh;
+  overflow: auto;
+}
+thead tr:nth-child(1) th {
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
