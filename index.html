@@ -1,60 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>The Gazetteer</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/leaflet.css" />
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-custom">
-      <a href="index.html">
-        <img src="images/GazetteerLogo.png" height="50px" width="70px">
-      </a>
-      <!-- This button is not visible Start-->
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarTogglerDemo02"
-        aria-controls="navbarTogglerDemo02"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-     <!-- This button is not visible End -->
-     
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Search Any Country"
-          />
-          <button class="btn btn-secondary my-2 my-sm-0" type="submit">
-            Search
-          </button>
-        </form>
-      </div>
-    </nav>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>The Gazetteer</title>
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/leaflet.css">
+   <link rel="stylesheet" href="css/leaflet-search.css">
+   <link rel="stylesheet" href="css/style.css">
+       
+</head>
+<body>
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-2 table-responsive" id="country_div"></div>
-        <div class="col-md-6 ml-auto"><div id="map"></div></div>
-        <div class="col-md-4"></div>
-      </div>
+ <div class="container-fluid"> 
+	<div class="row">
+		<div class="col-md-2 mt-4" >
+			<div id="country_div" class="table-responsive"></div>
+		</div>
+		<div class="col-md-6 ml-auto">
+			<div id="map"></div>
+		</div>
+		<div class="col-md-4" id="info_div"></div>
     </div>
-    <script src="js/jquery-min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/leaflet.js"></script>
-    <script src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
-    <script src="js/loadMap.js"></script>
-    <script src="js/control.js"></script>
-    <script src="js/zoomToLocation.js"></script>
-  </body>
+ </div>
+ <script src="js/jquery-min.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+ <script src="js/leaflet.js"></script>
+ <script src="js/leaflet-search.js"></script>
+ <script src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
+ <script src="js/loadMap.js"></script>
+ <script src="js/control.js"></script>
+ <script src="js/zoomToLocation.js"></script>
+</body>
 </html>
