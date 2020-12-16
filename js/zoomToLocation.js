@@ -15,19 +15,17 @@ if (navigator.geolocation) // Check if this is available in older browsers
             // Set latitude and longitude values dynamically by storing in an array variable. 
             const coords = [latitude, longitude];
 
-     
+
             // Creating a marker and a popup and add it to the map
             L
                 .marker(coords)
                 .addTo(map)
-                .bindPopup("<h3 class='text-center'><a href='https://www.google.co.uk/maps/@${latitude},${longitude}' target='_blank'>My Home!</a></h3>")
+                .bindPopup("<h6 class='text-center'><a href='https://www.google.co.uk/maps/@${latitude},${longitude}' target='_blank'>Your'e Here!</a></h6>")
                 .openPopup();
 
             // Respond to User events
-       
-                map.setView(coords, 15);
-          
 
+            map.setView(coords, 15);
 
         },
         function () { // Error callback function

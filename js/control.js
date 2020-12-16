@@ -1,60 +1,53 @@
-//controls
+// Description: A simple scale control that shows the scale of the current center of screen in metric (m/km) and imperial (mi/ft) systems
+// Source: https://leafletjs.com/reference-1.7.1.html#control-scale
+// Implementation: Added Scale at the bottom left of the map.
 L.control.scale().addTo(map);
-map.zoomControl.setPosition('bottomright');
 
+// Description: A basic zoom control with two buttons (zoom in and zoom out)
+// Source: https://leafletjs.com/reference-1.7.1.html#control-zoom
+// Implementation: Setting Zoom control (+, -) on the top right of the map
+map.zoomControl.setPosition("topright");
 
-// Search bar on the map 
-  let controlSearch = new L.Control.Search({
-    position:'topright',    // Location of the search bar?
-    layer: district_boundary,  // name of the layer
-    initial: false,
-		marker: false,
-    textPlaceholder: 'Search...',
-	propertyName : 'name'
+// Description: A Leaflet control that search markers/features location by custom property.
+// Source:  https://github.com/stefanocudini/leaflet-search
+let controlSearch = new L.Control.Search({
+  position: "topleft",
+  layer: district_boundary, // name of the layer
+  initial: true, // search elements only by initial text
+  marker: false, // false for hide
+  textPlaceholder: "Search...",
+  propertyName: "name",
 });
-  
-    controlSearch.on('search:locationfound', function(e) {
-      
-	 district_boundary.eachLayer(function(layer) {
-		
-    if (layer.feature.properties.name == e.text) {
-		highlight_boundary.clearLayers();
-		highlight_boundary.addData(layer.feature);
-        map.fitBounds(layer.getBounds());
-		highlight_boundary.setStyle(highstyle);
-		LoadCountryInfo(e.text	)
-    }
-})
-  })
- 
-map.addControl(controlSearch); // add it to the map
 
-// Loading Country's Information
-function LoadCountryInfo(name){
-	//var countryHtml = "<h3 class = 'm-2 text-primary text-center'>"+ name +"</h3>";
-	
-	
-	
-	$.ajax({
-               type:"GET",
-               dataType: "json",
-               url:"https://restcountries.eu/rest/v2/name/"+name+"?fullText=true",
-               success:function(data)
-               {
-				   console.log(data);
-				var countryHtml = "<div class='card text-white bg-info m-3' style='max-width: 30vw'><div class='card-header'><h1>"+name+"</h1></div><div class='card-body'><p class='card-text'>";  
-				  countryHtml += "<table class='table table-borderless text-white'>";  
-                  countryHtml += "<tr><th>Capital</th><td>"+data[0].capital+"</td></tr>";  
-                  countryHtml += "<tr><th>Population</th><td>"+data[0].population+"</td></tr>";  
-                  countryHtml += "<tr><th>Flag</th><td><img src="+data[0].flag+" style='height:80px'></td></tr>";
-				  countryHtml += "<tr><th>Currency</th><td>"+data[0].currencies[0].name+"</td></tr>";  
-                  countryHtml += "</table></p></div></div>";  
-				  $("#info_div").html(countryHtml);
-                
-               }
-            });
-	
-	
+// This function will execute, when a country is searched and found on control search bar
+controlSearch.on("search:locationfound", function (e) {
+  district_boundary.eachLayer(function (layer) {
+    if (layer.feature.properties.name == e.text) {
+      let iso_a2 = layer.feature.properties.iso_a2;
+      highlight_boundary.clearLayers(); //Clears previously selected country
+      highlight_boundary.addData(layer.feature); //Adding newly selected country
+      map.fitBounds(layer.getBounds()); //Zooming in to country selected
+      highlight_boundary.setStyle(highstyle); //Setting style to selected one
+      LoadCountryInfo(iso_a2); //Calling LoadCountryInfo function from below to get the country's info
+    }
+  });
+});
+
+// Implementation: Added Search control bar for searching countries on the top left of the map
+map.addControl(controlSearch);
+
+//Ajax for loading the country info
+function LoadCountryInfo(name) {
+  $.ajax({
+    url: "php/getData.php",
+    type: "POST",
+    data: "country=" + name,
+    success: function (response) {
+      let output = $.parseJSON(response);
+      $("#country_info").html(output.countryHtml); //Adding demographic information of displayed country
+      $("#covid_data").html(output.covid_data); // Sending data to Covid Modal
+      $("#weather_data").html(output.weather_data); // Sending data to Weather Modal
+      $("#news_data").html(output.news_data); // Sending data to News Modal
+    },
+  });
 }
- 
- 
