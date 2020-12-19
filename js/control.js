@@ -43,7 +43,9 @@ function LoadCountryInfo(name) {
     type: "POST",
     data: "country=" + name,
     success: function (response) {
-      let output = $.parseJSON(response);
+      var output = $.parseJSON(response);
+      // let output = JSON.parse(response);
+      // console.log(output);
       $("#country_info").html(output.countryHtml); //Adding demographic information of displayed country
       $("#covid_data").html(output.covid_data); // Sending data to Covid Modal
       $("#weather_data").html(output.weather_data); // Sending data to Weather Modal

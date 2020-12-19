@@ -1,6 +1,7 @@
 <?php
 
 $country = $_POST['country'];
+
 //Getting info from restcountries api
 $data = file_get_contents("https://restcountries.eu/rest/v2/alpha/$country");
 
@@ -13,20 +14,19 @@ $flag = $data['flag'];
 $currency = $data['currencies'][0]['name'];
 
 //Setting data/html for Modal info	
-$countryHtml = "<div class='card text-white bg-info m-10' style='max-width: 100vw'><div class='card-header'><h2>$country_name</h2></div><div class='card-body'><p class='card-text'>";  
+$countryHtml = "<div class='card text-white bg-info m-10' style='max-width: 100vw;height:78vh'><div class='card-header'><h2>$country_name</h2></div><div class='card-body p-0'><p class='card-text'>";  
 $countryHtml .= "<table class='table table-borderless text-white'>";  
 $countryHtml .= "<tr><th>Capital</th><td>$capital</td></tr>";  
 $countryHtml .= "<tr><th>Population</th><td>$population</td></tr>";  
 $countryHtml .= "<tr><th>Flag</th><td><img src='$flag' style='height:50px'></td></tr>";
 $countryHtml .= "<tr><th>Currency</th><td>$currency</td></tr>";  
-$countryHtml .= "<tr><th>Wikipedia</th><td><a href='https://en.wikipedia.org/wiki/$country' target='#' class='text-white'>$country</a></td></tr>";  
-$countryHtml .= "<tr>
-    <td><button type='button' class='btn btn-danger' data-toggle='modal' data-target='#coronoModal'>Covid</button></td>
-    <td><button type='button' class='btn btn-success' data-toggle='modal' data-target='#weatherModal'>Weather</button></td>
-    <td><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#newsModal'>News </button></td>
-    </tr>";  
+$countryHtml .= "<tr><th>Wikipedia</th><td><a href='https://en.wikipedia.org/wiki/$country' target='#' class='text-dark'>$country</a></td></tr>";  
   
-$countryHtml .= "</table></p></div></div>";  
+
+  
+$countryHtml .= "</table>";
+
+$countryHtml .= "<div class='btn-group btn-group-sm' role='group' aria-label='Basic example'><button type='button' class='btn btn-danger m-1' data-toggle='modal' data-target='#coronoModal'><i class='fas fa-shield-virus'></i> Covid</button><button type='button' class='btn btn-success m-1' data-toggle='modal' data-target='#weatherModal'><i class='fas fa-cloud-sun'></i> Weather</button><button type='button' class='btn btn-warning m-1' data-toggle='modal' data-target='#newsModal'> <i class='far fa-newspaper'></i> News</button></div></div></div>";  
 
 //Getting Covid Info
 $coronoData = file_get_contents("https://corona.lmao.ninja/v2/countries/$country?yesterday&strict&query");
@@ -79,9 +79,16 @@ $weatherHtml .= "<tr><th>Wind Degrees</th><td>$wind_degree</td></tr>";
 $weatherHtml .= "</table>";  
 
 // Getting News Info 
-
-// Setting HTML for News Modal 
-
+$newsData = file_get_contents("http://api.mediastack.com/v1/news?country=$country&access_key=529740f259ac5f9a3db2e50100c43d28");
+$newsData = json_decode($newsData, true);
+$newsHtml = "<table class='table table-borderless' style=font-size:2vh>";
+$newsData = $newsData['data'];
+for ($row = 0; $row < 5; $row++) {
+		$data = $newsData[$row]['title'];
+		$url = $newsData[$row]['url'];
+		$newsHtml .= "<tr><td><i class='far fa-newspaper'></i> <a href='$url' target='#' class='text-primary'>$data</a></td></tr>";
+	}
+ $newsHtml .= "</table>";  
 //Sending data to Javascript 
 echo json_encode(array("countryHtml" => $countryHtml, "covid_data" => $coronaHtml,  "weather_data" => $weatherHtml, "news_data" => $newsHtml));
 ?>

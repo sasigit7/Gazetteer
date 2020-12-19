@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Gazetteer</title>
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -15,7 +14,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-custom">
@@ -41,17 +39,38 @@
             <p>
               <a href="#" class="faa-parent animated-hover">
                 <i class="fa fa-space-shuttle faa-passing"></i>
-                The specification was to reply to a map-based app to provide
+                <strong>Description:</strong>The specification was to reply to a map-based app to provide
                 information by profiling countries – with a focus on a “mobile
-                first” development.</a>
+                first” development.
+              </a>
               <br />
+              <hr>
               <a href="#" class="faa-parent animated-hover">
                 <i class="fa fa-space-shuttle faa-passing"></i>
-                Tech Stack Used: HTML, CSS, BootStrap4, JavaScript, leaflet.js
-                library, JQuery, AJAX & PHP. </a><br />
+                <strong>Tech Stack Used:</strong>HTML, CSS, BootStrap4, JavaScript, leaflet.js
+                library, JQuery, AJAX & PHP.
+              </a>
+              <br />
+              <hr>
               <a href="#" class="faa-parent animated-hover">
                 <i class="fa fa-space-shuttle faa-passing"></i>
-                Third party API's used: Geonames, OpenWeather. </a><br />
+                <strong>Third party API's used from:</strong>
+                <br>
+                https://restcountries.eu/ for List Of Countries and their demographics, <br>
+                https://corona.lmao.ninja/ for Covid Details, <br>
+                https://openweathermap.org/api for Weather Details, <br>
+                https://mediastack.com/ for Global News
+              </a><br />
+              <hr>
+              <a href="#" class="faa-parent animated-hover">
+                <i class="fa fa-space-shuttle faa-passing"></i>
+                <strong>Beautification purposes, following are used:</strong>
+                <br>
+                Created Free Logo from https://logomakr.com/ <br>
+                Created Favicon from https://favicon.io/ <br>
+                Created Icons from https://fontawesome.com/
+              </a> <br>
+              <hr>
               <a href="#" class="faa-parent animated-hover">
                 <i class="fa fa-space-shuttle faa-passing"></i>
                 The solution is assessed on its delivery to
@@ -74,10 +93,9 @@
       <div
         class="col-md-2 border border-dark border-primary rounded-right border-bottom-0 border-top-0 table-responsive"
         id="country_list"></div>
-      <div class="col-md-6 auto p-3 mb-2 bg-primary rounded-circle p-3 mb-2 bg-gradient-primary" id="map"></div>
+      <div class="col-md-6 auto p-3 mb-2 bg-primary bg-gradient-primary" id="map"></div>
       <div class="col-md-4 m-10" id="country_info"></div>
       <!-- Corona Data -->
-
       <div class="modal fade" id="coronoModal">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
@@ -134,10 +152,8 @@
           </div>
         </div>
       </div>
-      <!--  -->
     </div>
   </div>
-
   <!-- Footer -->
   <footer>
     <div class="container">
@@ -184,5 +200,4 @@
   <script src="js/control.js"></script>
   <script src="js/zoomToLocation.js"></script>
 </body>
-
 </html>

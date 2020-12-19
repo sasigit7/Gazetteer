@@ -142,12 +142,10 @@
   }
 }
 
-/* Country Info Modal */
-
-/* Body */
+/* Map */
 #map {
   position: inherited;
-  height: 82vh;
+  height: 76vh;
   margin: 0;
   padding: 0;
 }
@@ -284,4 +282,9 @@ footer .quick-links {
 .fa-ellipsis-h {
   color: white;
   padding: 1rem 0;
+}
+
+.modal-body {
+  height: 50vh;
+  overflow-y: scroll;
 }
