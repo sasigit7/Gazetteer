@@ -1,4 +1,6 @@
-# The Gazetteer
+# Gazetteer
+> <p align="center">Check Upgraded Gazetteer Version Here: <a href="https://github.com/sasigit7/TheGazetteer" alt="The Gazetteer"/>The Gazetteer</a></p>
+</p>
 
 ## Description: 
 > This application is envisaged as a “mobile first“ website that will operate equally well on desktop computers. 
@@ -11,14 +13,15 @@
 > <p align="center">  Watch Project Demo Video By Clicking Below Image: 
 [![Watch the Demo](https://i.imgur.com/BtaPZc7.png)](https://youtu.be/nLbIaw5qvDU)
   </p>
-<p align="center"> Live Link: <a href="https://thegazetteer.co.uk/" alt="Gazetteer"/>The Gazetteer</a></p>
+<p align="center"> Live Link: <a href="https://thegazetteer.co.uk/" alt="Gazetteer"/>Gazetteer</a></p>
 
 ## Design & Development Life Cycle:
 <img src="https://user-images.githubusercontent.com/24832458/103209170-56c97800-48fa-11eb-8747-54d127abc90e.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/24832458/103209187-6052e000-48fa-11eb-8135-7e9c33d4cf62.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/24832458/103209196-6779ee00-48fa-11eb-802c-682890b90559.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/24832458/103209203-6b0d7500-48fa-11eb-8a7e-6a943e5d79ec.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/24832458/103209211-6ea0fc00-48fa-11eb-8251-d86edd65e057.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/24832458/103209218-72cd1980-48fa-11eb-840e-cbd8cc4c1723.png" width="30%"></img> 
 
 ## Technologies & Tools I used for this project 🛠️
 <p> Front-end -> HTML, CSS, BootStrap, Javascript, JQuery, Leaflet </p>
-<p> Back-end -> AJAX, PHP </p>
+<p> Web Development Technique -> AJAX </p>
+<p> Back-end -> PHP (Used To return Only Data) </p>
 <p> Third Party Free API's 
 <ul>
   <li><a href="https://restcountries.eu">List Of Countries and their demographics</a></li>
